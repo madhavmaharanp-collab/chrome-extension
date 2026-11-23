@@ -1,0 +1,13 @@
+{
+  "name": "audio-master",
+  "version": "1.0.0",
+  "description": "Audio Master - AI-Powered Chrome Audio Enhancement Extension",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "package": "node scripts/package-extension.js"
+  },
+  "author": "Audio Master Team",
+  "license": "MIT",
+  "devDependencies": {}
+}

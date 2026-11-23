@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Master</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- TOP APPLICATION HEADER -->
+    <header class="app-header">
+      <div class="brand-wrapper">
+        <svg class="logo-wave" viewBox="0 0 32 32" fill="none">
+          <rect x="2" y="10" width="3" height="12" rx="1.5" fill="url(#brandGrad)"/>
+          <rect x="7" y="5" width="3" height="22" rx="1.5" fill="url(#brandGrad)"/>
+          <rect x="12" y="2" width="3" height="28" rx="1.5" fill="url(#brandGrad)"/>
+          <rect x="17" y="7" width="3" height="18" rx="1.5" fill="url(#brandGrad)"/>
+          <rect x="22" y="4" width="3" height="24" rx="1.5" fill="url(#brandGrad)"/>
+          <rect x="27" y="11" width="3" height="10" rx="1.5" fill="url(#brandGrad)"/>
+          <defs>
+            <linearGradient id="brandGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#A855F7"/>
+              <stop offset="1" stop-color="#00F0FF"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="brand-text">
+          <h1>Audio <span class="highlight">Master</span></h1>
+          <p id="headerSubtitle">Control. Enhance. Enjoy.</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Master Power Quick Indicator Button -->
+        <button id="masterPowerHeaderBtn" class="master-power-btn active" title="Toggle Master Audio Engine (ON/OFF)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+            <line x1="12" y1="2" x2="12" y2="12"></line>
+          </svg>
+          <span id="masterPowerHeaderText">ON</span>
+        </button>
+
+        <div class="header-divider"></div>
+
+        <!-- Theme Toggle Button -->
+        <button id="themeToggleBtn" class="icon-btn" title="Toggle Light/Dark Theme">
+          <svg class="theme-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <!-- Close Window Button -->
+        <button id="closeBtn" class="icon-btn" title="Close">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- 3 PRIMARY NAVIGATION TABS -->
+    <nav class="nav-tabs" role="tablist">
+      <button id="tabAudioControlsBtn" class="nav-tab-btn active" role="tab" aria-selected="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="4" y1="21" x2="4" y2="14"></line>
+          <line x1="4" y1="10" x2="4" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12" y2="3"></line>
+          <line x1="20" y1="21" x2="20" y2="16"></line>
+          <line x1="20" y1="12" x2="20" y2="3"></line>
+        </svg>
+        Audio Controls
+      </button>
+
+      <button id="tabSpotifyPlayerBtn" class="nav-tab-btn" role="tab" aria-selected="false">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" color="#1ED760">
+          <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+        </svg>
+        Spotify Player
+      </button>
+
+      <button id="tabMoreSettingsBtn" class="nav-tab-btn" role="tab" aria-selected="false">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+        More Settings
+      </button>
+    </nav>
+
+    <!-- ====================================================================
+         SECTION 1: AUDIO CONTROL PANEL
+         ==================================================================== -->
+    <main id="audioControlsView" class="view-panel active">
+
+      <!-- Status Banner with Master Audio Switch & Visualizer -->
+      <section class="status-banner" id="mainStatusBanner">
+        <div class="status-left">
+          <div class="banner-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M9 18V5l12-2v13"></path>
+              <circle cx="6" cy="18" r="3"></circle>
+              <circle cx="18" cy="16" r="3"></circle>
+            </svg>
+          </div>
+          <div class="status-text">
+            <h2>Audio Master <span id="statusActiveBadge" class="status-badge">Active</span></h2>
+            <p id="statusMasterNote">Your Personal Audio Control Center</p>
+          </div>
+        </div>
+
+        <div class="status-right-controls">
+          <!-- Animated Equalizer Bars -->
+          <div class="sound-bars-anim" id="soundBarsAnim">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+
+          <!-- Master Power Switch Widget -->
+          <div class="master-power-widget" title="Master Audio Switch: Enable or Mute All Audio">
+            <span class="master-power-lbl" id="masterPowerStateLabel">POWER</span>
+            <label class="toggle-switch toggle-master">
+              <input type="checkbox" id="masterProcessingToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Active Audio Feature Strip (Live indicators) -->
+      <div class="active-features-strip" id="activeFeaturesStrip">
+        <span class="feature-chip" id="chipMasterVol">Vol: 75%</span>
+        <span class="feature-chip" id="chipBalance">Bal: Center</span>
+        <span class="feature-chip" id="chipBass">Bass: +8dB</span>
+        <span class="feature-chip" id="chipVocal">Vocals: +7dB</span>
+        <span class="feature-chip" id="chipTreble">Treble: +7dB</span>
+        <span class="feature-chip" id="chipBooster">Booster: 120%</span>
+        <span class="feature-chip" id="chipEQ">EQ: Flat</span>
+        <span class="feature-chip" id="chipSpotify">Spotify: Off</span>
+        <span class="feature-chip" id="chipSep">Sep: Both</span>
+      </div>
+
+      <!-- Group 1: Master Audio & Balance -->
+      <section class="section-group">
+        <div class="section-header-row">
+          <span class="section-header-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+            Master Volume &amp; Balance
+          </span>
+          <button id="resetMasterSectionBtn" class="btn-section-reset" title="Reset Master Volume and Balance">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+            </svg>
+            Reset
+          </button>
+        </div>
+
+        <div class="controls-stack">
+          <!-- Master Volume Row -->
+          <div class="control-row" id="rowMasterVolume">
+            <label class="toggle-switch" title="Enable/Disable Master Volume">
+              <input type="checkbox" id="masterVolumeToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+            <div class="control-meta">
+              <button id="muteVolumeBtn" class="btn-mute-icon" title="Click to Mute/Unmute Master Sound">
+                <svg id="masterSpeakerIcon" class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+              </button>
+              <div class="control-titles">
+                <span class="control-title">Master Volume</span>
+                <span class="control-desc">Control overall sound</span>
+              </div>
+            </div>
+            <div class="slider-container">
+              <input type="range" id="masterVolumeSlider" class="modern-range" min="0" max="100" value="75">
+            </div>
+            <div class="badge-reset-grp">
+              <span id="masterVolumeVal" class="val-badge">75%</span>
+              <button id="resetMasterVolBtn" class="btn-item-reset" title="Reset Volume to 75%">↺</button>
+            </div>
+          </div>
+
+          <!-- Left/Right Balance Row -->
+          <div class="control-row" id="rowBalance">
+            <label class="toggle-switch" title="Enable/Disable Stereo Balance">
+              <input type="checkbox" id="balanceToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+            <div class="control-meta">
+              <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3v18"></path>
+                <path d="M4 7l8-3 8 3"></path>
+                <path d="M6 18a4 4 0 0 0 0-8 4 4 0 0 0 0 8z"></path>
+                <path d="M18 18a4 4 0 0 0 0-8 4 4 0 0 0 0 8z"></path>
+              </svg>
+              <div class="control-titles">
+                <span class="control-title">Balance</span>
+                <span class="control-desc">Left / Right Balance</span>
+              </div>
+            </div>
+            <div class="slider-container">
+              <span class="balance-label">L</span>
+              <input type="range" id="balanceSlider" class="modern-range" min="-100" max="100" value="0">
+              <span class="balance-label">R</span>
+            </div>
+            <div class="badge-reset-grp">
+              <span id="balanceVal" class="val-badge">0%</span>
+              <button id="resetBalanceBtn" class="btn-item-reset" title="Reset Balance to Center">↺</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Group 2: Acoustic Boosters Stack -->
+      <section class="section-group">
+        <div class="section-header-row">
+          <span class="section-header-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 10v4M6 7v10M10 4v16M14 7v10M18 9v6M22 11v2"></path>
+            </svg>
+            Acoustic Boosters &amp; Amplification
+          </span>
+          <button id="resetBoostersSectionBtn" class="btn-section-reset" title="Reset all boosters to default">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+            </svg>
+            Reset
+          </button>
+        </div>
+
+        <div class="controls-stack">
+          <!-- Bass Boost -->
+          <div class="control-row" id="rowBassBoost">
+            <label class="toggle-switch" title="Enable/Disable Bass Boost">
+              <input type="checkbox" id="bassBoostToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+            <div class="control-meta">
+              <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 10v4"></path>
+                <path d="M6 7v10"></path>
+                <path d="M10 4v16"></path>
+                <path d="M14 7v10"></path>
+                <path d="M18 9v6"></path>
+                <path d="M22 11v2"></path>
+              </svg>
+              <div class="control-titles">
+                <span class="control-title">Bass Boost</span>
+                <span class="control-desc">Low-end punch (120Hz)</span>
+              </div>
+            </div>
+            <div class="slider-container">
+              <input type="range" id="bassBoostSlider" class="modern-range" min="0" max="100" value="65">
+            </div>
+            <div class="badge-reset-grp">
+              <span id="bassBoostVal" class="val-badge">65%</span>
+              <button id="resetBassBtn" class="btn-item-reset" title="Reset Bass Boost to 65%">↺</button>
+            </div>
+          </div>
+
+          <!-- Vocal Boost (Speech Clarity) -->
+          <div class="control-row" id="rowVocalBoost">
+            <label class="toggle-switch" title="Enable/Disable Vocal Boost">
+              <input type="checkbox" id="vocalBoostToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+            <div class="control-meta">
+              <svg class="control-icon vocal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="23"></line>
+                <line x1="8" y1="23" x2="16" y2="23"></line>
+              </svg>
+              <div class="control-titles">
+                <span class="control-title">Vocal Boost</span>
+                <span class="control-desc">Speech &amp; vocal clarity (1.8kHz)</span>
+              </div>
+            </div>
+            <div class="slider-container">
+              <input type="range" id="vocalBoostSlider" class="modern-range" min="0" max="100" value="70">
+            </div>
+            <div class="badge-reset-grp">
+              <span id="vocalBoostVal" class="val-badge">70%</span>
+              <button id="resetVocalBtn" class="btn-item-reset" title="Reset Vocal Boost to 70%">↺</button>
+            </div>
+          </div>
+
+          <!-- Treble Boost -->
+          <div class="control-row" id="rowTrebleBoost">
+            <label class="toggle-switch" title="Enable/Disable Treble Boost">
+              <input type="checkbox" id="trebleBoostToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+            <div class="control-meta">
+              <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+              <div class="control-titles">
+                <span class="control-title">Treble Boost</span>
+                <span class="control-desc">Highs &amp; acoustic air (8kHz)</span>
+              </div>
+            </div>
+            <div class="slider-container">
+              <input type="range" id="trebleBoostSlider" class="modern-range" min="0" max="100" value="60">
+            </div>
+            <div class="badge-reset-grp">
+              <span id="trebleBoostVal" class="val-badge">60%</span>
+              <button id="resetTrebleBtn" class="btn-item-reset" title="Reset Treble Boost to 60%">↺</button>
+            </div>
+          </div>
+
+          <!-- Real Volume Booster (Up to 200%) -->
+          <div class="control-row" id="rowVolumeBooster">
+            <label class="toggle-switch" title="Enable/Disable Volume Booster">
+              <input type="checkbox" id="volumeBoosterToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+            <div class="control-meta">
+              <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                <path d="M9 12H4s.55-3.03 2-4.5c1.45-1.47 4.5-2 4.5-2"></path>
+                <path d="M12 9V4s3.03.55 4.5 2c1.47 1.45 2 4.5 2 4.5"></path>
+              </svg>
+              <div class="control-titles">
+                <span class="control-title">Real Volume Booster</span>
+                <span class="control-desc">Increase volume (Up to 200%)</span>
+              </div>
+            </div>
+            <div class="slider-container">
+              <input type="range" id="volumeBoosterSlider" class="modern-range" min="100" max="200" value="120">
+            </div>
+            <div class="badge-reset-grp">
+              <span id="volumeBoosterVal" class="val-badge">120%</span>
+              <button id="resetBoosterBtn" class="btn-item-reset" title="Reset Volume Booster to 120%">↺</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Group 3: Custom 10-Band Equalizer Card -->
+      <section class="eq-card">
+        <div class="eq-header">
+          <div class="eq-header-left">
+            <label class="toggle-switch" title="Enable/Disable Equalizer">
+              <input type="checkbox" id="equalizerToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+            <div class="control-titles">
+              <span class="control-title">Custom Equalizer</span>
+              <span class="control-desc">Fine-tune 10 frequency bands</span>
+            </div>
+          </div>
+          <div class="eq-header-actions">
+            <button id="resetEqCardBtn" class="btn-section-reset" title="Reset Equalizer to 0dB Flat">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+              </svg>
+              Reset EQ
+            </button>
+            <button id="openEqTabBtn" class="btn-open-eq" title="Open Precision EQ in Settings">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="21" x2="4" y2="14"></line>
+                <line x1="4" y1="10" x2="4" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="3"></line>
+                <line x1="20" y1="21" x2="20" y2="16"></line>
+                <line x1="20" y1="12" x2="20" y2="3"></line>
+              </svg>
+              Open EQ &gt;
+            </button>
+          </div>
+        </div>
+
+        <div class="eq-visual-area">
+          <div class="eq-db-axis">
+            <span>+12dB</span>
+            <span>0dB</span>
+            <span>-12dB</span>
+          </div>
+          <div class="eq-bands-wrapper">
+            <div class="eq-zero-line"></div>
+            <!-- 10 Vertical Bands -->
+            <div class="eq-col"><input type="range" class="eq-slider-vertical" data-band="0" min="-12" max="12" value="0"><span class="eq-freq-label">60Hz</span></div>
+            <div class="eq-col"><input type="range" class="eq-slider-vertical" data-band="1" min="-12" max="12" value="0"><span class="eq-freq-label">170Hz</span></div>
+            <div class="eq-col"><input type="range" class="eq-slider-vertical" data-band="2" min="-12" max="12" value="0"><span class="eq-freq-label">310Hz</span></div>
+            <div class="eq-col"><input type="range" class="eq-slider-vertical" data-band="3" min="-12" max="12" value="0"><span class="eq-freq-label">600Hz</span></div>
+            <div class="eq-col"><input type="range" class="eq-slider-vertical" data-band="4" min="-12" max="12" value="0"><span class="eq-freq-label">1kHz</span></div>
+            <div class="eq-col"><input type="range" class="eq-slider-vertical" data-band="5" min="-12" max="12" value="0"><span class="eq-freq-label">3kHz</span></div>
+            <div class="eq-col"><input type="range" class="eq-slider-vertical" data-band="6" min="-12" max="12" value="0"><span class="eq-freq-label">6kHz</span></div>
+            <div class="eq-col"><input type="range" class="eq-slider-vertical" data-band="7" min="-12" max="12" value="0"><span class="eq-freq-label">12kHz</span></div>
+            <div class="eq-col"><input type="range" class="eq-slider-vertical" data-band="8" min="-12" max="12" value="0"><span class="eq-freq-label">14kHz</span></div>
+            <div class="eq-col"><input type="range" class="eq-slider-vertical" data-band="9" min="-12" max="12" value="0"><span class="eq-freq-label">16kHz</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Group 4: Listening Modes & Presets -->
+      <section class="bottom-actions-card">
+        <div class="bottom-action-left">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#A855F7">
+            <path d="M2 12h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H2v-6z"></path>
+            <path d="M22 12h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2v-6z"></path>
+            <path d="M6 12a6 6 0 0 1 12 0"></path>
+          </svg>
+          <div class="control-titles">
+            <span class="control-title">Listening Modes &amp; Presets</span>
+            <span class="control-desc">Quick acoustic calibrations</span>
+          </div>
+        </div>
+        <div class="bottom-action-btns">
+          <select id="quickModeSelect" class="btn-select-dropdown" title="Select Listening Mode">
+            <option value="both" selected>Mode: Both</option>
+            <option value="vocal">Mode: Vocal</option>
+            <option value="music">Mode: Music</option>
+          </select>
+          <select id="presetSelectDropdown" class="btn-select-dropdown" title="Select Audio Preset">
+            <option value="Default">⭐ Default</option>
+            <option value="Bass Boost">⭐ Bass Boost</option>
+            <option value="Vocal Boost">⭐ Vocal Boost</option>
+            <option value="Treble Boost">⭐ Treble Boost</option>
+            <option value="Movie">⭐ Movie</option>
+            <option value="Music">⭐ Music</option>
+          </select>
+        </div>
+      </section>
+      <button id="resetAllBtn" class="btn-reset-all reset-all-direct" title="Reset all audio parameters to baseline">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+        </svg>
+        Reset All
+      </button>
+
+    </main>
+
+    <!-- ====================================================================
+         SECTION 2: SPOTIFY MUSIC PLAYER SECTION (NEW DEDICATED PLAYER)
+         ==================================================================== -->
+    <main id="spotifyPlayerView" class="view-panel">
+
+      <!-- Spotify Sound Engine -->
+      <section class="spotify-card-container">
+        <!-- Dedicated Music Volume Fader -->
+        <div class="spotify-volume-row">
+          <svg class="spotify-volume-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <input type="range" id="spotifyVolumeSlider" class="modern-range spotify-range" min="0" max="100" value="75">
+          <span id="spotifyVolumeVal" class="val-badge">75%</span>
+        </div>
+
+        <!-- Integrated Spotify Mode Acoustic Profiles -->
+        <div class="spotify-profiles-box">
+          <div class="box-header-row">
+            <div class="profile-title-wrap">
+              <svg class="profile-bars-icon" width="21" height="21" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="2" y="10" width="3" height="9" rx="1"></rect>
+                <rect x="7" y="5" width="3" height="14" rx="1"></rect>
+                <rect x="12" y="8" width="3" height="11" rx="1"></rect>
+              </svg>
+              <div>
+                <span class="box-title">Spotify Sound Engine Profiles</span>
+                <p class="box-desc">Transparent loudness normalization &amp; spatial enhancement</p>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <button id="resetSpotifyPlayerProfilesBtn" class="btn-section-reset" title="Reset Spotify Profiles to default">↺ Reset</button>
+              <label class="toggle-switch" title="Enable/Disable Spotify Engine">
+                <input type="checkbox" id="spotifyEngineToggle">
+                <span class="slider-toggle-round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="spotify-profiles-grid">
+            <div class="sp-profile-card active" data-sp-prof="studio">
+              <div class="sp-card-top">
+                <h4>Studio Quality</h4>
+                <span class="sp-check">&#x2713;</span>
+              </div>
+              <p>Linear reference response with soft harmonic warmth.</p>
+            </div>
+
+            <div class="sp-profile-card" data-sp-prof="bass">
+              <div class="sp-card-top">
+                <h4>Spotify Bass</h4>
+                <span class="sp-check">&#x2713;</span>
+              </div>
+              <p>Tight sub-bass resonance without mid-bass mud.</p>
+            </div>
+
+            <div class="sp-profile-card" data-sp-prof="immersive">
+              <div class="sp-card-top">
+                <h4>Immersive (3D)</h4>
+                <span class="sp-check">&#x2713;</span>
+              </div>
+              <p>3D expanded soundstage via Mid-Side spatialization.</p>
+            </div>
+
+            <div class="sp-profile-card" data-sp-prof="clear">
+              <div class="sp-card-top">
+                <h4>Clear Audio</h4>
+                <span class="sp-check">&#x2713;</span>
+              </div>
+              <p>High-definition vocal presence and crisp percussion.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ====================================================================
+         SECTION 3: MORE SETTINGS DASHBOARD
+         ==================================================================== -->
+    <main id="moreSettingsView" class="view-panel">
+
+      <!-- Settings Sub Navigation -->
+      <div class="sub-nav-tabs">
+        <button class="sub-nav-btn active" data-subtab="vocal-music">&#x1F399;&#xFE0F; Vocal &amp; Music</button>
+        <button class="sub-nav-btn" data-subtab="equalizer">&#x1F39A;&#xFE0F; Equalizer</button>
+        <button class="sub-nav-btn" data-subtab="audio-effects">&#x1FA9A; Audio Effects</button>
+        <button class="sub-nav-btn" data-subtab="per-website">&#x1F310; Per-Website</button>
+        <button class="sub-nav-btn" data-subtab="general">&#x2699;&#xFE0F; General</button>
+      </div>
+
+      <!-- Subtab Container: Vocal & Music Separation Studio -->
+      <section id="subtabVocalMusic" class="subtab-content">
+        <div class="separation-studio-card">
+          <div class="studio-title-row">
+            <div class="studio-title-left">
+              <div class="studio-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M9 18V5l12-2v13"></path>
+                  <circle cx="6" cy="18" r="3"></circle>
+                  <circle cx="18" cy="16" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <h2 class="card-main-title">
+                  Vocal &amp; Music Separation Studio <span class="badge-new">NEW</span>
+                </h2>
+                <p class="card-sub-title">Control vocals and music independently</p>
+              </div>
+            </div>
+            <div class="studio-top-actions">
+              <button id="resetStudioBtn" class="btn-section-reset" title="Reset Vocal & Music Separation Studio to Default">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+                </svg>
+                Reset Studio
+              </button>
+              <span class="enable-lbl">Enable</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="separationStudioToggle">
+                <span class="slider-toggle-round"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 4 Mode Selection Cards -->
+          <div class="separation-modes-grid">
+            <div class="mode-card" data-sep-mode="vocals-only">
+              <span class="mode-card-check">&#x2713;</span>
+              <svg class="mode-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="23"></line>
+              </svg>
+              <span class="mode-card-title">Vocals Only</span>
+              <span class="mode-card-desc">Speech &amp; Acapella</span>
+            </div>
+
+            <div class="mode-card" data-sep-mode="music-only">
+              <span class="mode-card-check">&#x2713;</span>
+              <svg class="mode-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+              <span class="mode-card-title">Music Only</span>
+              <span class="mode-card-desc">Karaoke Instrumental</span>
+            </div>
+
+            <div class="mode-card active" data-sep-mode="both">
+              <span class="mode-card-check">&#x2713;</span>
+              <svg class="mode-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 10v4M6 6v12M10 2v20M14 6v12M18 10v4M22 12v0"></path>
+              </svg>
+              <span class="mode-card-title">Both</span>
+              <span class="mode-card-desc">Normal Playback</span>
+            </div>
+
+            <div class="mode-card" data-sep-mode="custom-mix">
+              <span class="mode-card-check">&#x2713;</span>
+              <svg class="mode-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="21" x2="4" y2="14"></line>
+                <line x1="4" y1="10" x2="4" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="3"></line>
+                <line x1="20" y1="21" x2="20" y2="16"></line>
+                <line x1="20" y1="12" x2="20" y2="3"></line>
+              </svg>
+              <span class="mode-card-title">Custom Mix</span>
+              <span class="mode-card-desc">Independent Faders</span>
+            </div>
+          </div>
+
+          <!-- Independent Sliders: Vocal & Music -->
+          <div class="studio-sliders-wrapper">
+            <!-- Vocal Control -->
+            <div class="studio-slider-row">
+              <div class="studio-slider-head">
+                <div class="studio-slider-title-grp">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#C084FC">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                  </svg>
+                  <span class="studio-slider-label">Vocal Control</span>
+                  <button id="toggleVocalTrackBtn" class="pill-track-toggle active" title="Mute/Unmute Vocal Track">
+                    <span id="vocalTrackStateBadge">● Active</span>
+                  </button>
+                </div>
+                <span id="vocalStudioVal" class="val-badge">75%</span>
+              </div>
+              <p class="studio-slider-sub">Independent vocal level (0&ndash;200%)</p>
+              <input type="range" id="vocalStudioSlider" class="modern-range vocal-slider" min="0" max="200" value="75">
+            </div>
+
+            <!-- Music Control -->
+            <div class="studio-slider-row">
+              <div class="studio-slider-head">
+                <div class="studio-slider-title-grp">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#00F0FF">
+                    <path d="M9 18V5l12-2v13"></path>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="16" r="3"></circle>
+                  </svg>
+                  <span class="studio-slider-label">Music Control</span>
+                  <button id="toggleMusicTrackBtn" class="pill-track-toggle active" title="Mute/Unmute Music Track">
+                    <span id="musicTrackStateBadge">● Active</span>
+                  </button>
+                </div>
+                <span id="musicStudioVal" class="val-badge">35%</span>
+              </div>
+              <p class="studio-slider-sub">Independent music level (0&ndash;200%)</p>
+              <input type="range" id="musicStudioSlider" class="modern-range music-slider" min="0" max="200" value="35">
+            </div>
+          </div>
+
+          <!-- Studio Tip -->
+          <div class="studio-tip">
+            &#x1F4A1; <span>Tip: Use "Vocals Only" for karaoke/speeches, or "Music Only" to enjoy clean instrumentals.</span>
+          </div>
+
+          <!-- Separation architecture status -->
+          <div class="ai-status-card">
+            <span>Separation Engine: <strong id="aiStatusLabel">Mid/Side DSP (not neural AI)</strong></span>
+            <span class="ai-status-sub">Local processing; no stem model</span>
+          </div>
+        </div>
+
+        <!-- Dual Card Grid -->
+        <div class="settings-dual-grid" style="margin-top:10px;">
+          <!-- Advanced Audio Processing -->
+          <div class="settings-card">
+            <div class="settings-card-head">
+              <div class="card-head-title-grp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#00F0FF">
+                  <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                  <rect x="9" y="9" width="6" height="6"></rect>
+                </svg>
+                <span class="card-head-title">Advanced Audio</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="advancedAudioToggle" checked>
+                <span class="slider-toggle-round"></span>
+              </label>
+            </div>
+            <p class="card-head-sub">Smart enhancements for clean audio</p>
+            <div class="feature-check-list">
+              <div class="check-item"><span class="check-icon">&#x2714;</span> Noise Reduction</div>
+              <div class="check-item"><span class="check-icon">&#x2714;</span> Echo Cancellation</div>
+              <div class="check-item"><span class="check-icon">&#x2714;</span> Dynamic Compression</div>
+            </div>
+          </div>
+
+          <!-- Presets Management -->
+          <div class="settings-card">
+            <div class="settings-card-head">
+              <div class="card-head-title-grp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" color="#F59E0B">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <span class="card-head-title">Presets Management</span>
+              </div>
+            </div>
+            <p class="card-head-sub">Save and manage your favorite settings</p>
+            <button id="openSavePresetModalBtn" class="btn-secondary" style="width:100%; justify-content:center; margin-top:auto;">
+              &#x1F4BE; Save Preset &blacktriangledown;
+            </button>
+          </div>
+        </div>
+
+        <!-- Per-Website Banner -->
+        <div class="manage-sites-card" style="margin-top:10px;">
+          <div class="manage-sites-left">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#00F0FF">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <div>
+              <span class="manage-sites-title">Per-Website Settings</span>
+              <p class="manage-sites-sub">Apply customized settings automatically</p>
+            </div>
+          </div>
+          <button id="manageSitesBtn" class="btn-secondary">
+            Manage Sites &#x2197;
+          </button>
+        </div>
+      </section>
+
+      <!-- Subtab 2: Equalizer Management -->
+      <section id="subtabEqualizer" class="subtab-content" style="display:none;">
+        <div class="settings-card" style="gap:12px;">
+          <div class="subtab-header-row">
+            <div>
+              <h3 class="card-main-title">Equalizer Precision Manager</h3>
+              <p class="card-sub-title">Adjust individual gains and fine-tune each band.</p>
+            </div>
+            <button id="resetEqSubtabBtn" class="btn-section-reset" title="Reset all EQ bands to 0dB flat">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+              </svg>
+              Reset to 0dB
+            </button>
+          </div>
+          <div id="fullEqBandsList" style="display:flex; flex-direction:column; gap:8px;">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Subtab 3: Audio Effects -->
+      <section id="subtabAudioEffects" class="subtab-content" style="display:none;">
+        <div class="settings-card" style="gap:10px;">
+          <div class="subtab-header-row">
+            <div>
+              <h3 class="card-main-title">Dynamics &amp; Spatial Effects</h3>
+              <p class="card-sub-title">Peak protection and soundstage widening.</p>
+            </div>
+            <button id="resetAudioEffectsBtn" class="btn-section-reset" title="Reset Audio Effects to default">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+              </svg>
+              Reset Effects
+            </button>
+          </div>
+          <div class="control-row">
+            <label class="toggle-switch">
+              <input type="checkbox" id="peakProtectionToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+            <div class="control-titles">
+              <span class="control-title">Clipping Protection</span>
+              <span class="control-desc">Hard-limiting prevents digital distortion</span>
+            </div>
+          </div>
+          <div class="control-row">
+            <label class="toggle-switch">
+              <input type="checkbox" id="loudnessNormToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+            <div class="control-titles">
+              <span class="control-title">Loudness Normalization</span>
+              <span class="control-desc">Maintains consistent sound across videos</span>
+            </div>
+          </div>
+          <div class="control-row">
+            <label class="toggle-switch">
+              <input type="checkbox" id="stereoWidenerToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+            <div class="control-titles">
+              <span class="control-title">Stereo Widener</span>
+              <span class="control-desc">Broadens acoustic soundstage for headphones</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Subtab 4: Per-Website Management -->
+      <section id="subtabPerWebsite" class="subtab-content" style="display:none;">
+        <div class="settings-card" style="gap:10px;">
+          <div class="subtab-header-row">
+            <div>
+              <h3 class="card-main-title">Configured Website Profiles</h3>
+              <p class="card-sub-title">Auto-applies customized sound settings on visit.</p>
+            </div>
+            <button id="resetWebsitesBtn" class="btn-section-reset" title="Restore default website profiles">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+              </svg>
+              Reset Profiles
+            </button>
+          </div>
+          <div id="websiteProfilesList" style="display:flex; flex-direction:column; gap:6px;">
+            <!-- Populated via JS -->
+          </div>
+          <button id="saveCurrentSiteBtn" class="btn-primary" style="margin-top:6px;">
+            &#x1F4BE; Save Current Tab as Custom Profile
+          </button>
+        </div>
+      </section>
+
+      <!-- Subtab 5: General Settings -->
+      <section id="subtabGeneral" class="subtab-content" style="display:none;">
+        <div class="settings-card" style="gap:12px;">
+          <div class="subtab-header-row">
+            <div>
+              <h3 class="card-main-title">General Preferences</h3>
+              <p class="card-sub-title">Extension behavior and automation.</p>
+            </div>
+            <button id="resetGeneralBtn" class="btn-section-reset" title="Reset general preferences">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+              </svg>
+              Reset General
+            </button>
+          </div>
+          <div class="control-row">
+            <label class="toggle-switch">
+              <input type="checkbox" id="autoAttachToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+            <div class="control-titles">
+              <span class="control-title">Auto-Capture Audio</span>
+              <span class="control-desc">Automatically engage engine on tab sound</span>
+            </div>
+          </div>
+          <div class="control-row">
+            <label class="toggle-switch">
+              <input type="checkbox" id="showLiveVisToggle" checked>
+              <span class="slider-toggle-round"></span>
+            </label>
+            <div class="control-titles">
+              <span class="control-title">Live Visualizer</span>
+              <span class="control-desc">Real-time animated audio reaction</span>
+            </div>
+          </div>
+          <button id="factoryResetBtn" class="btn-secondary" style="color:#ef4444; border-color:rgba(239,68,68,0.4); margin-top:8px;">
+            &#x26A0;&#xFE0F; Factory Reset All Audio Master Settings
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- IN-APP CONFIRMATION MODAL (FOR RESETS) -->
+    <div id="confirmResetModal" class="modal-overlay">
+      <div class="modal-box">
+        <h3 id="confirmModalTitle">Reset Section?</h3>
+        <p id="confirmModalDesc">Are you sure you want to restore this section to its default settings? Other sections will remain unaffected.</p>
+        <div class="modal-actions">
+          <button id="cancelResetModalBtn" class="btn-secondary">Cancel</button>
+          <button id="executeResetModalBtn" class="btn-danger">Reset Section</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: SAVE CUSTOM PRESET -->
+    <div id="savePresetModal" class="modal-overlay">
+      <div class="modal-box">
+        <h3>Save Custom Audio Preset</h3>
+        <p class="modal-sub">Save your current EQ, Bass, Vocal, and Treble adjustments as a reusable profile.</p>
+        <input type="text" id="presetNameInput" class="modal-input" placeholder="e.g. My Heavy Bass Profile">
+        <div class="modal-actions">
+          <button id="cancelPresetModalBtn" class="btn-secondary">Cancel</button>
+          <button id="confirmSavePresetBtn" class="btn-primary">Save Preset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- IN-APP FLOATING FEEDBACK TOAST -->
+    <div id="appToast" class="app-toast">
+      <span class="toast-icon">✓</span>
+      <span id="toastMsg">Section restored to default settings.</span>
+    </div>
+
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

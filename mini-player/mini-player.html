@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Audio Master Mini Player</title>
+  <link rel="stylesheet" href="mini-player.css">
+</head>
+<body>
+  <div class="mini-player-pill">
+    <!-- Brand / Status -->
+    <div class="mini-brand">
+      <svg class="mini-logo" viewBox="0 0 32 32" fill="none">
+        <rect x="3" y="10" width="3" height="12" rx="1.5" fill="url(#miniGrad)"/>
+        <rect x="8" y="5" width="3" height="22" rx="1.5" fill="url(#miniGrad)"/>
+        <rect x="13" y="2" width="3" height="28" rx="1.5" fill="url(#miniGrad)"/>
+        <rect x="18" y="7" width="3" height="18" rx="1.5" fill="url(#miniGrad)"/>
+        <rect x="23" y="4" width="3" height="24" rx="1.5" fill="url(#miniGrad)"/>
+        <rect x="28" y="11" width="3" height="10" rx="1.5" fill="url(#miniGrad)"/>
+        <defs>
+          <linearGradient id="miniGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#A855F7"/>
+            <stop offset="1" stop-color="#00F0FF"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="mini-titles">
+        <h2>Audio <span>Master</span></h2>
+        <span class="mini-status" id="miniStatusLabel">Active</span>
+      </div>
+    </div>
+
+    <!-- Center Volume & Mute -->
+    <div class="mini-controls-center">
+      <button class="btn-mute" id="miniMuteBtn" title="Mute/Unmute">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+      </button>
+      <input type="range" class="mini-slider" id="miniVolumeSlider" min="0" max="100" value="75">
+      <span class="mini-val-badge" id="miniVolumeVal">75%</span>
+    </div>
+
+    <!-- Expand to Full App -->
+    <button class="mini-expand-btn" id="miniExpandBtn" title="Open Full Dashboard">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
+  </div>
+
+  <script type="module" src="mini-player.js"></script>
+</body>
+</html>

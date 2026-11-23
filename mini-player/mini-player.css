@@ -1,0 +1,178 @@
+/* Mini Player Sleek Pill Styling (Light & Dark Support) */
+:root {
+  --bg-mini: #0c0f1e;
+  --pill-bg: linear-gradient(135deg, rgba(14, 18, 38, 0.95) 0%, rgba(10, 14, 28, 0.98) 100%);
+  --grad-primary: linear-gradient(135deg, #a855f7 0%, #00f0ff 100%);
+  --border-subtle: rgba(90, 105, 165, 0.35);
+  --accent-cyan: #00f0ff;
+  --accent-purple: #a855f7;
+  --text-heading: #ffffff;
+  --text-main: #f1f5f9;
+  --text-dim: #64748b;
+  --slider-bg: rgba(255, 255, 255, 0.15);
+  --shadow-pill: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px rgba(168, 85, 247, 0.2);
+}
+
+[data-theme="light"] {
+  --bg-mini: #f8fafc;
+  --pill-bg: rgba(255, 255, 255, 0.96);
+  --grad-primary: linear-gradient(135deg, #7c3aed 0%, #0891b2 100%);
+  --border-subtle: rgba(203, 213, 225, 0.85);
+  --accent-cyan: #0891b2;
+  --accent-purple: #7c3aed;
+  --text-heading: #0f172a;
+  --text-main: #1e293b;
+  --text-dim: #64748b;
+  --slider-bg: #e2e8f0;
+  --shadow-pill: 0 8px 24px rgba(15, 23, 42, 0.12), 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  overflow: hidden;
+}
+
+.mini-player-pill {
+  width: 100%;
+  max-width: 360px;
+  height: 52px;
+  background: var(--pill-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 26px;
+  box-shadow: var(--shadow-pill);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  gap: 10px;
+  backdrop-filter: blur(16px);
+  transition: all 0.25s ease;
+}
+
+.mini-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.mini-logo {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.mini-titles h2 {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-heading);
+  line-height: 1.1;
+}
+
+.mini-titles h2 span {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mini-status {
+  font-size: 9px;
+  font-weight: 600;
+  color: #10b981;
+}
+
+.mini-controls-center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.btn-mute {
+  background: transparent;
+  border: none;
+  color: var(--accent-cyan);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.btn-mute:hover {
+  transform: scale(1.1);
+}
+
+.mini-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 6px;
+  background: linear-gradient(to right, #00f0ff 0%, #a855f7 var(--fill-pct, 75%), var(--slider-bg) var(--fill-pct, 75%), var(--slider-bg) 100%);
+  outline: none;
+  cursor: pointer;
+}
+
+[data-theme="light"] .mini-slider {
+  background: linear-gradient(to right, #0891b2 0%, #7c3aed var(--fill-pct, 75%), var(--slider-bg) var(--fill-pct, 75%), var(--slider-bg) 100%);
+}
+
+.mini-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--accent-cyan);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.7);
+  cursor: grab;
+}
+
+.mini-val-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-heading);
+  min-width: 28px;
+  text-align: right;
+}
+
+.mini-expand-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+[data-theme="light"] .mini-expand-btn {
+  background: #f1f5f9;
+}
+
+.mini-expand-btn:hover {
+  background: var(--grad-primary);
+  color: #ffffff;
+  transform: scale(1.08);
+}
